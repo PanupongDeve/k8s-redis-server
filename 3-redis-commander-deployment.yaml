@@ -18,5 +18,12 @@ spec:
       - image: rediscommander/redis-commander:latest
         name: redis
         env:
-        - name: REDIS_HOSTS
-          value: "redis_server:redis:6379"
+        - name: REDIS_HOST
+          value: "redis"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: redis-config
+              key: REDIS_PASSWORD
